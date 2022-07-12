@@ -1,0 +1,180 @@
+var/www/html 
+pour lancer Lamp
+pour creer projet symfony :
+export PATH="$HOME/.symfony/bin:$PATH"^C
+
+symfony check:requirements
+symfony new monprojet --version=5.1 --full 
+
+symfony new monprojet --full --php=7.4.3 --webapp
+
+
+Changer les droits et passer de root a fernandes
+
+pour studio code
+Php intelephense
+php namespace resolver
+twig language 2
+suggest basic a decocher
+Format on save a cocher
+emmet ajouter twig    dans item et html dans value
+
+https://packagist.org/?query=date pour ajouter des resources via composer
+https://cheatography.com/liorchamla/cheat-sheets/les-commandes-php-et-composer-a-connaitre/
+Lilouveve_1964  mot de passe Bd
+pour retrouver la commande symfony :
+
+export PATH="$HOME/.symfony/bin:$PATH"^C
+
+
+**************************debuguer
+composer require debug
+
+Pour creer user tout privilege
+sudo mysql
+Puis dans la console MySQL :
+CREATE USER 'nom_utilisateur_choisi'@'localhost' IDENTIFIED BY 'mot_de_passe_solide';
+GRANT ALL ON *.* TO 'nom_utilisateur_choisi'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+QUIT;
+
+Important pour creer Controller :
+composer require annotation 
+symfony console make:controller ConferenceController
+si make ne fonctionne pas faire composer require symfony/maker-bundle --dev      
+pour voir route declarer :
+php bin/console debug:router
+
+******************************************************************
+deploiement 
+reconnaissance apache
+composer require symfony/apache-pack
+
+Git.com
+herve1964
+Hfernand_1212
+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
+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
+
+
+echo "# ECOMMERCE" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/herve1964/ECOMMERCE.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote1 add origin https://github.com/herve1964/ECOMMERCE.git
+git branch -M main
+git push -u origin main
+
+
+LA PREMIER FOIS  apres git commit -m "debut projet"
+
+
+echo 'web: heroku-php-apache2 public/' > Procfile
+
+git add Procfile
+git commit -m "Heroku Procfile"
+
+
+pour tranfert vers git la premiere fois
+echo "# test" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origine2 https://github.com/herve1964/test.git
+git push -u origine2 main
+
+et apres 
+git remote add origine7 https://github.com/herve1964/partitionsv5.git
+git branch -M main
+git push -u origine7 main
+
+
+**************************git simplement******************
+plus simplement faire
+git add .
+git commit -m "base de donnee "
+git push origin main
+et tout part chez git
+
+
+
+pour gerer les redirections
+creer htacces pour avoir reconnaissance des dossiers comme chemin url
+composer require symfony/apache-pack
+
+git add composer.json composer.lock symfony.lock public/.htaccess
+git commit -m "apache-pack"
+
+*******************************************************************
+Mysql avec Heroku
+dans resource aller chercher jawsDBmysql gratuite
+recuper chaine de connection
+variables d'environement dans setting heroku config var
+DATABASE_URL  du et
+APP_SECRET STRIPE_PUBLIC_KEY STRIPE_SECRET_KEY MAILER_DSN 
+c'est variable ecrase .env
+
+dans composer.json
+ajouter apres "scripts" :
+"database-setup": [
+"php bin/console doctrine:migrations:migrate --no-interaction",
+"php bin/console doctrine:fixtures:load --no-interaction"
+],
+"post-install-cmd": [
+"@auto-scripts",
+"@database-setup"
+],
+et dans bundles.php tout passer en ['all' => true]
+*********************************************************
+ameliorer les log dans Heroku
+dans config/packages/prod monolog.yaml
+dans nested path : "php://stderr"
+
+********************************************************************
+Gestion des base de doctrine 
+composer require doctrine
+ nouveau service : php bin/console debug:autowiring --all doctrine
+ nouveau de toutes les commande : php bin/console
+ lire la version de la Bd : mysql --version
+ creer la base de donnee avec le nom donner dans .env:
+ DATABASE_URL="mysql://zkpl8392_fernandes:Gabinveve_2021@127.0.0.1:3306/zkpl8392_mespartitions?serverVersion=5.7"
+
+ php bin/console doctrine:database:create
+pour nouvelle commande pour les controllers doctrine : composer require maker  ou plutot  composer require doctrine maker
+en tappant php bin/console on a plein de make:
+composer require maker
+Creer une entity : php bin/console make:entity
+php bin/console make:migration   pour creer une nouvelle migration
+php bin/console doctrine:migration:migrate pour envoyer a la Bd et jouer la migration
+repositery pour remonter les enregistrements 
+php bin/console debug;autowiring --all repository on voit le repository
+et dans un controller home(ProductRepository $productRepository)
+pour voir la liste des repository:
+php bin/console debug:autowiring --all manager
+pour creer un champ :
+https://symfony.com/doc/current/doctrine.html 
+
+
+
+****************RAZ base de donnee**************
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:create
+
+
+
+******************fixture****************************
+composer require orm-fixtures
+creer code dans appfixture
+pour lancer la fixture :
+php bin/console doctrine:fixtures:load
+attention dans o2switch 
+git checkout avec nom de fichier pour retrouver le fichier d'avant
+securite git
+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
